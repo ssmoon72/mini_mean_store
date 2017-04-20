@@ -1,0 +1,37 @@
+<!-- Partial that shows when creating a new friend -->
+<h2 class="center-align">New Product</h2>
+<div class="row">
+  <form ng-submit="createProduct()" class='col s4'>
+    <label for="product_name"> Product Name: </label>
+    <input class="new_name"type="text" name="product_name" ng-model='product.product_name'>
+    <label for="img_url">Image URL: </label>
+    <input type="text" name="img_url" ng-model='product.img_url'>
+    <textarea name="description" ng-model='product.description' placeholder='Item Description'> Description </textarea>
+    <label for="qty"> Product Quantity: </label>
+    <input type="text" name="qty" ng-model='product.qty'>
+    <input type="submit" name="submit" value="Add New Product">
+  </form>
+  <table class='col s6 push-s1 striped'>
+    <thead>
+      <tr>
+        <th> First Name </th>
+        <th> Item Description </th>
+        <th> Created On </th>
+        <th> Quantity </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='product in products | filter: nameFilter'>
+        <td> {{product.product_name}} </td>
+        <td> {{product.description}} </td>
+        <td> {{product.createdAt}} </td>
+        <td> {{product.qty}} </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="row">
+  <div class='col s4'>
+    <input id="search" type="text" placeholder="Search" ng-model="nameFilter">
+  </div>
+</div>

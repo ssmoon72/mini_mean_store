@@ -1,0 +1,35 @@
+<!-- Partial that shows when creating a new friend -->
+<h2 class="center-align">New Order</h2>
+<div class="row">
+  <form class="col s4" ng-submit="createOrder()">
+    <label for="user_select">User: </label>
+    <select class="browser-default"id="user_select" ng-model="newOrder._user" ng-options="user.first_name + ' ' + user.last_name for user in users">
+      <option></option>
+    </select>
+    <label for="product_select">Product: </label>
+    <select class="browser-default" id="product_select" ng-model = "newOrder._product" ng-options="product.product_name for product in products">
+      <option></option>
+    </select>
+    <label for="qty">Enter Quantity: </label>
+    <input id="qty" type="text" ng-model="newOrder.quantity">
+    <input type="submit" name="submit" value="submit">
+  </form>
+  <table class='col s6 push-s1 striped'>
+    <thead>
+      <tr>
+        <th> Customer Name </th>
+        <th> Product Name </th>
+        <th> Ordered On </th>
+        <th> Quantity </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='order in orders'>
+        <td> {{order._user.first_name}} {{order._user.last_name}} </td>
+        <td> {{order._product.product_name}} </td>
+        <td> {{order.createdAt}} </td>
+        <td> {{order.quantity}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
